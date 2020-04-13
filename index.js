@@ -39,6 +39,9 @@ app.use('/login',login);
 app.get('/',(req,res)=>{
     res.render('index');
 });
+app.get('/homepage',(req,res)=>{
+    res.render('homepage');
+})
 //server running code
 app.listen(port,()=>{
     console.log(`listening to the ${port}....`);
