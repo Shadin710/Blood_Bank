@@ -26,7 +26,7 @@ router.get('/homepage',(req,res)=>{
                 });
             }
             //no error in finding
-            res.send("hello homepage");
+            res.render('homepage');
         });
 });
 
