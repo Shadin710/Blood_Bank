@@ -1,0 +1,326 @@
+doctype html
+head
+  title BSB
+  meta(charset='utf-8')
+  meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport')
+  // css
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700,800' rel='stylesheet' media='screen')
+  link(href='css/bootstrap.min.css' rel='stylesheet' media='screen')
+  link(href='css/style.css' rel='stylesheet' media='screen')
+  link(href='color/default.css' rel='stylesheet' media='screen')
+// Navigation
+nav.navbar.navbar-default(role='navigation')
+  .container
+    .navbar-header
+      button.navbar-toggle(type='button' data-toggle='collapse' data-target='.navbar-ex1-collapse')
+        span.sr-only Toggle nav
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      // Logo text or image
+      a.navbar-brand(href='index.html') Blood Bank
+    .navigation.collapse.navbar-collapse.navbar-ex1-collapse
+      ul.nav.navbar-nav
+        li.current
+          a(href='#intro') Home
+        li
+          a(href='#') Profile
+        li
+          a(href='#') Maps
+        li
+          a(href='/login/search' method='GET') Search
+        li
+          a(href='#') Contact us
+        li
+          a(href='#') Logout
+// intro area
+section#intro
+  .intro-container
+    #introCarousel.carousel.slide.carousel-fade(data-ride='carousel')
+      .carousel-inner(role='listbox')
+        // Slide 1
+        .item.active
+          .carousel-background
+            img(src='img/intro/4.jpg' alt='')
+          .carousel-container
+            .carousel-content
+              h2.animated.fadeInDown Welcome
+              p.animated.fadeInUp
+                | This where everyone can connect with each other. This is where people can help each other out by share their blood XD
+              a.btn-get-started.animated.fadeInUp(href='#about') Read More
+        // Slide 2
+        .item
+          .carousel-background
+            img(src='img/intro/5.jpg' alt='')
+          .carousel-container
+            .carousel-content
+              h2.animated.fadeInDown Give &amp; Take 
+              p.animated.fadeInUp
+                | In order to help someone we humbly request you don&apos;t donate blood if you have Cancer or HIV, the reciver might not survive it&apos;s bad way to go to hell so don&apos;t do it
+              a.btn-get-started.animated.fadeInUp(href='#about') Read More
+        // Slide 3
+        .item
+          .carousel-background
+            img(src='img/intro/6.jpg' alt='')
+          .carousel-container
+            .carousel-content
+              h2.animated.fadeInDown Suggestions
+              p.animated.fadeInUp
+                | A wise man said,&quot;Always laugh when you can, it is cheap medicine.&quot; anyhow he is dead guess that didn&apos;t work.
+              a.btn-get-started.animated.fadeInUp(href='#about') Read More
+      a.carousel-control-prev(href='#introCarousel' role='button' data-slide='prev')
+        span.carousel-control-prev-icon.fa.fa-angle-left(aria-hidden='true')
+        span.sr-only Previous
+      a.carousel-control-next(href='#introCarousel' role='button' data-slide='next')
+        span.carousel-control-next-icon.fa.fa-angle-right(aria-hidden='true')
+        span.sr-only Next
+// #intro
+// About
+section#about.home-section.bg-white
+  .container
+    .row
+      .col-md-offset-2.col-md-8
+        .section-heading
+          h2 About us
+          .heading-line
+          p We want to create a huge community
+    .row.wow.fadeInUp
+      .col-md-6.about-img
+        img(src='img/hola.jpg' alt='')
+      .col-md-6.content
+        h2 IDK what to say we are just a bunch of hooligans
+        h3 he he
+        p
+          | Ahoy mate!! are looking for someone to suck the blood from you ??
+          | look no further the BSB is here!!
+          | we will suck every last bit of blood from your body :)
+          | So, don&apos;t wait come here we will do our best to leave you lifeless in end of the
+          | process. :)
+          | don&apos;t worry you won&apos;t go to hell
+// Parallax 1
+section#parallax1.home-section.parallax(data-stellar-background-ratio='0.5')
+  .container
+    .row
+      .col-md-12
+        .color-light
+          h2.wow.bounceInDown(data-wow-delay='0.5s') Details are the key for perfection so give every detail okay??
+          p.lead.wow.bounceInUp(data-wow-delay='1s') Don&apos;t give false info you don&apos;t want to go to hell 
+// Services
+section#services.home-section.bg-white
+  .container
+    .row
+      .col-md-offset-2.col-md-8
+        .section-heading
+          h2 Services
+          .heading-line
+          p We will drain blood as long as you live :)
+    .row
+      .col-md-12
+        #carousel-service.service.carousel.slide
+          // slides
+          .carousel-inner
+            .item.active
+              .row
+                .col-sm-12.col-md-offset-1.col-md-6
+                  .wow.bounceInLeft
+                    h4 Donate
+                    p If you get tired don&apos;t worry we will force you to donate sounds good right?? :) 
+                .col-sm-12.col-md-5
+                  .screenshot.wow.bounceInRight
+                    img.img-responsive(src='img/screenshots/1.png' alt='')
+            .item
+              .row
+                .col-sm-12.col-md-offset-1.col-md-6
+                  .wow.bounceInLeft
+                    h4 Recive
+                    p If you have can
+                .col-sm-12.col-md-5
+                  .screenshot.wow.bounceInRight
+                    img.img-responsive(src='img/screenshots/2.png' alt='')
+            .item
+              .row
+                .col-sm-12.col-md-offset-1.col-md-6
+                  .wow.bounceInLeft
+                    h4 Satisfaction
+                    p you will go to heaven :).
+                .col-sm-12.col-md-5
+                  .screenshot.wow.bounceInRight
+                    img.img-responsive(src='img/screenshots/3.png' alt='')
+          // Indicators
+          ol.carousel-indicators
+            li.active(data-target='#carousel-service' data-slide-to='0')
+            li(data-target='#carousel-service' data-slide-to='1')
+            li(data-target='#carousel-service' data-slide-to='2')
+// Works
+section#portfolio.home-section.bg-gray
+  .container
+    .row
+      .col-md-offset-2.col-md-8
+        .section-heading
+          h2 Works
+          .heading-line
+          p
+            | Look at our community every type of people in here donates blood no matter your are depressed or hungry just donate blood
+    .row
+      .col-lg-12
+        ul#og-grid.og-grid
+          li
+            a(href='#' data-largesrc='img/works/rsz_1shifat.jpg' data-title='The Depressed one' data-description="I don't know what to do :( should I eat?? should I be on a diet?? should I sleep ?? should I play games?? I don't know what to do but only thing I know what to do is I am gonna donate blood :)")
+              img(src='img/works/thumbs/rsz_shifat.jpg' alt='')
+          li
+            a(href='#' data-largesrc='img/works/rsz_1raihan.jpg' data-title='The' data-description='hola')
+              img(src='img/works/thumbs/rsz_raihan.jpg' alt='')
+          li
+            a(href='#' data-largesrc='img/works/rsz_1faim.jpg' data-title='The Hungry one' data-description="where's my food?? I am Hungry, still I donate blood")
+              img(src='img/works/thumbs/rsz_faim.jpg' alt='img01')
+          li
+            a(href='#' data-largesrc='img/works/rsz_1the_hand.jpg' data-title='The Shy one' data-description='Umm, I am shy,But I donate blood regularly')
+              img(src='img/works/thumbs/rsz_the_hand.jpg' alt='img01')
+// Parallax 2
+section#parallax2.home-section.parallax(data-stellar-background-ratio='0.5')
+  .container
+    .row
+      .col-md-12
+        ul.clients
+          li.wow.fadeInDown(data-wow-delay='0.3s')
+            a(href='#')
+              img(src='img/clients/.png' alt='')
+          li.wow.fadeInDown(data-wow-delay='0.6s')
+            a(href='#')
+              img(src='img/clients/.png' alt='')
+          li.wow.fadeInDown(data-wow-delay='0.9s')
+            a(href='#')
+              img(src='img/clients/.png' alt='')
+          li.wow.fadeInDown(data-wow-delay='1.1s')
+            a(href='#')
+              img(src='img/clients/.png' alt='')
+// Team
+section#team.home-section.bg-white
+  .container
+    .row
+      .col-md-offset-2.col-md-8
+        .section-heading
+          h2 Our Team
+          .heading-line
+          p Just don&apos;t ask ....
+    .col-xs-12.col-sm-3.col-md-3.col-lg-3(data-wow-delay='0.3s')
+      .box-team.wow.bounceInUp
+        img.img-circle.img-responsive(src='img/team/rsz_shadin.jpg' alt='')
+        h4 Shadin
+        p Who let the dogs out?? woof woof!!
+    .col-xs-12.col-sm-3.col-md-3.col-lg-3(data-wow-delay='0.5s')
+      .box-team.wow.bounceInUp
+        img.img-circle.img-responsive(src='img/team/rafee.jpg' alt='')
+        h4 Rafee
+        p Tomar abbu
+// Contact
+section#contact.home-section.bg-gray
+  .container
+    .row
+      .col-md-offset-2.col-md-8
+        .section-heading
+          h2 Contact us
+          .heading-line
+          p
+            | If you have any question or just want to say &apos;hello&apos; to BSB please fill out form below and
+            | we will start sucking your blood  within 24 hours.
+    .row
+      .col-md-offset-2.col-md-8
+        #sendmessage Your message has been sent. Thank you!
+        #errormessage
+        form.form-horizontal.contactForm(action='' method='post' role='form')
+          .col-md-offset-2.col-md-8
+            .form-group
+              input#name.form-control(type='text' name='name' placeholder='Your Name' data-rule='minlen:4' data-msg='Please enter at least 4 chars')
+              .validation
+          .col-md-offset-2.col-md-8
+            .form-group
+              input#email.form-control(type='email' name='email' placeholder='Your Email' data-rule='email' data-msg='Please enter a valid email')
+              .validation
+          .col-md-offset-2.col-md-8
+            .form-group
+              input#subject.form-control(type='text' name='subject' placeholder='Subject' data-rule='minlen:4' data-msg='Please enter at least 8 chars of subject')
+              .validation
+          .col-md-offset-2.col-md-8
+            .form-group
+              textarea.form-control(name='message' rows='5' data-rule='required' data-msg='Please write something for us' placeholder='Message')
+              .validation
+          .form-group
+            .col-md-offset-2.col-md-8
+              button.btn.btn-theme.btn-lg.btn-block(type='submit') Send message
+// Bottom widget
+section#bottom-widget.home-section.bg-white
+  .container
+    .row
+      .col-md-4
+        .contact-widget.wow.bounceInLeft
+          i.fa.fa-map-marker.fa-4x
+          h5 Main Office
+          p
+            | My home
+            br
+            |  Dhaka
+      .col-md-4
+        .contact-widget.wow.bounceInUp
+          i.fa.fa-phone.fa-4x
+          h5 Call
+          p
+            | +8801512312312
+            br
+            |  +8801512312312
+      .col-md-4
+        .contact-widget.wow.bounceInRight
+          i.fa.fa-envelope.fa-4x
+          h5 Email us
+          p
+            | shadin@gmail.com
+            br
+            | rafee@gmail.com
+    .row.mar-top30
+      .col-md-12
+        h5 We&apos;re on social networks
+        ul.social-network
+          li
+            a(href='#')
+              span.fa-stack.fa-2x
+                i.fa.fa-circle.fa-stack-2x
+                i.fa.fa-facebook.fa-stack-1x.fa-inverse
+          li
+            a(href='#')
+              span.fa-stack.fa-2x
+                i.fa.fa-circle.fa-stack-2x
+                i.fa.fa-linkedin.fa-stack-1x.fa-inverse
+          li
+            a(href='#')
+              span.fa-stack.fa-2x
+                i.fa.fa-circle.fa-stack-2x
+                i.fa.fa-twitter.fa-stack-1x.fa-inverse
+          li
+            a(href='#')
+              span.fa-stack.fa-2x
+                i.fa.fa-circle.fa-stack-2x
+                i.fa.fa-instagram.fa-stack-1x.fa-inverse
+// Footer
+footer
+  .container
+    .row
+      .col-md-12
+        p Copyright &copy; BSB. All rights reserved. just kidding!!!
+        .credits
+          | Designed by 
+          a(href='#') BSB team
+a.back-to-top(href='#')
+  i.fa.fa-chevron-up
+// js
+script(src='js/jquery.js')
+script(src='js/bootstrap.min.js')
+script(src='js/wow.min.js')
+script(src='js/jquery.scrollTo.min.js')
+script(src='js/jquery.nav.js')
+script(src='js/modernizr.custom.js')
+script(src='js/grid.js')
+script(src='js/stellar.js')
+// Contact Form JavaScript File
+script(src='contactform/contactform.js')
+// Template Custom Javascript File
+script(src='js/custom.js')
