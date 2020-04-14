@@ -1,0 +1,49 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Search
+  link(rel='stylesheet' href='css/search.css' type='text/css')
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700,800' rel='stylesheet' media='screen')
+  link(href='css/bootstrap.min.css' rel='stylesheet' media='screen')
+  link(href='css/style.css' rel='stylesheet' media='screen')
+  link(href='color/default.css' rel='stylesheet' media='screen')
+nav.navbar.navbar-default(role='navigation')
+  .container
+    .navbar-header
+      button.navbar-toggle(type='button' data-toggle='collapse' data-target='.navbar-ex1-collapse')
+        span.sr-only Toggle nav
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='index.html') Blood Bank
+    .navigation.collapse.navbar-collapse.navbar-ex1-collapse
+      ul.nav.navbar-nav
+        li.current
+          a(href='#intro') Home
+        li
+          a(href='#') Profile
+        li
+          a(href='#') Maps
+        li
+          a(href='#') Search
+        li
+          a(href='#') Contact us
+        li
+          a(href='#') Logout
+form.box(action='' method='POST')
+  strong
+    h1 Search for Users
+  input(type='text' placeholder='Username' name='userSearch')
+  strong
+    label(for='bloodGroup') Select Blood Group
+  select#bloodGroup
+    option(value='A+') A+
+    option(value='A-') A-
+    option(value='B+') B+
+    option(value='B-') B-
+    option(value='O+') O+
+    option(value='O-') O-
+    option(value='AB+') AB+
+    option(value='AB-') AB-
+  input(type='submit' value='Search')
