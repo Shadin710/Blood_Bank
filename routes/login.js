@@ -49,5 +49,8 @@ router.post('/homepage',
         });
     }
 );
+router.get('/search',(req,res)=>{
+    res.render('search');
+});
 
 module.exports = router;
