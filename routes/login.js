@@ -50,8 +50,33 @@ router.post('/homepage',
         });
     }
 );
-router.get('/search',(req,res)=>{
+router.get('/search', (req, res) => {
     res.render('search');
 });
+
+router.post('/get_result',
+    [
+        check('username').not().isEmpty().trim().escape()
+    ],
+    (req, res) => {
+        const error = validationResult(req);
+        if (!error.isEmpty()) {
+            res.send("validation error");
+        }
+
+        user.findOne({ username: req.body.username}, (error, result) => {
+            if (error) {
+                res.send("error found");
+            }
+            //result
+            if (result) {
+                res.send("found the user");
+                console.log(req.body.username);
+            }
+            else {
+                res.send("user not found");
+            }
+        });
+    });
 
 module.exports = router;
