@@ -48,7 +48,8 @@ router.post('/create',
             })
         }
         //end
-        
+        const hashed =  bcrypt.hashSync(req.body.password,10);
+
         // everything is okay
 
         //now to create new user
@@ -56,7 +57,7 @@ router.post('/create',
             {
                 username: req.body.username,
                 email: req.body.email,
-                password: req.body.password
+                password: hashed
             },
             (error,result)=>{
                 if(error)
