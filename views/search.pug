@@ -31,10 +31,10 @@ nav.navbar.navbar-default(role='navigation')
           a(href='#') Contact us
         li
           a(href='#') Logout
-form.box(action='' method='POST')
+form.box(action='/login/get_result' method='POST')
   strong
     h1 Search for Users
-  input(type='text' placeholder='Username' name='userSearch')
+  input(type='text' placeholder='Username' name='username')
   strong
     label(for='bloodGroup') Select Blood Group
   select#bloodGroup
