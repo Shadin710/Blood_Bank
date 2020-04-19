@@ -228,10 +228,10 @@ section#contact.home-section.bg-gray
       .col-md-offset-2.col-md-8
         #sendmessage Your message has been sent. Thank you!
         #errormessage
-        form.form-horizontal.contactForm(action='' method='post' role='form')
+        form.form-horizontal.contactForm(action='/login/send' method='post' role='form')
           .col-md-offset-2.col-md-8
             .form-group
-              input#name.form-control(type='text' name='name' placeholder='Your Name' data-rule='minlen:4' data-msg='Please enter at least 4 chars')
+              input#name.form-control(type='text' name='name' placeholder='Your name' data-rule='minlen:4' data-msg='Please enter at least 4 chars')
               .validation
           .col-md-offset-2.col-md-8
             .form-group

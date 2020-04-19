@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const user = require('./../models/user');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
+const nodemailer = require('nodemailer');
 
 router.use(express.static(path.join(__dirname + './../views')));
 
@@ -77,5 +78,35 @@ router.post('/get_result',
             }
         });
     });
+    router.post('/send',(req,res)=>{
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: '', //the admins email
+                pass: ''// the admins password
+            }
+        });
+        var mailOptions = {
+            from :req.body.email,
+            to: '', // the admins email
+            subject: req.body.subject,
+            text: req.body.message
 
+        };
+        transporter.sendMail(mailOptions,(error,info)=>{
+            if(error)
+            {
+                return res.json({
+                    status: false,
+                    message: 'Sending failed....',
+                    error: error
+                })
+            }
+            else
+            {
+                res.send('sent');
+            }
+        })
+
+    });
 module.exports = router;
