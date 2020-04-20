@@ -6,6 +6,7 @@ const user = require('./../models/user');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
+let get_loguser= '';
 
 router.use(express.static(path.join(__dirname + './../views')));
 
@@ -37,6 +38,7 @@ router.post('/homepage',
                 var isMatch = bcrypt.compareSync(req.body.password, result.password);
                 if (isMatch) {
                     res.render('homepage');
+                    get_loguser = req.body.username;
                 }
                 else {
                     res.redirect('/login');
@@ -80,8 +82,13 @@ router.post('/get_result',
         });
     });
     router.get('/profile',(req,res)=>{
-        res.render('user_profile');
-        console.log(req.query.username);
+        res.render('user_profile',{
+            data: {
+                name:get_loguser
+            }
+        });
+        //debugger
+       // console.log(get_loguser);
     });
 router.post('/send', (req, res) => {
     var transporter = nodemailer.createTransport({
