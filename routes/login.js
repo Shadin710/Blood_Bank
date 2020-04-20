@@ -81,6 +81,7 @@ router.post('/get_result',
     });
     router.get('/profile',(req,res)=>{
         res.render('user_profile');
+        console.log(req.query.username);
     });
 router.post('/send', (req, res) => {
     var transporter = nodemailer.createTransport({
