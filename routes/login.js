@@ -109,7 +109,7 @@ router.post('/get_result',
         //debugger
        // console.log(get_loguser);
     });
-    
+
     //helps user to get in touch with the admin
 router.post('/send', (req, res) => {
     var transporter = nodemailer.createTransport({
@@ -140,4 +140,10 @@ router.post('/send', (req, res) => {
     })
 
 });
+//adding logout 
+router.get('/logout',(req,res)=>{
+    res.redirect('/login');
+    get_loguser = '';
+ });
+
 module.exports = router;
