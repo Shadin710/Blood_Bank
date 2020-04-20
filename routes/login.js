@@ -13,10 +13,14 @@ router.use(express.static(path.join(__dirname + './../views')));
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
+//generates login page
 router.get('/', (req, res) => {
     res.render('login');
 });
 
+
+
+//renders homepage if the user gives the right credentials of his or her account
 router.post('/homepage',
     [
         check('username').not().isEmpty().trim().escape(),
@@ -53,9 +57,13 @@ router.post('/homepage',
         });
     }
 );
+
+//renders the search page
 router.get('/search', (req, res) => {
     res.render('search');
 });
+
+//if anyone tries to enter the homepage with proper verification 
 router.get('/homepage',(req,res)=>{
     if(get_loguser){
         res.render('homepage');
@@ -66,6 +74,8 @@ router.get('/homepage',(req,res)=>{
         res.redirect('/login');
     }
 });
+
+//gives the output of the search result
 router.post('/get_result',
     [
         check('username').not().isEmpty().trim().escape()
@@ -99,6 +109,8 @@ router.post('/get_result',
         //debugger
        // console.log(get_loguser);
     });
+    
+    //helps user to get in touch with the admin
 router.post('/send', (req, res) => {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
