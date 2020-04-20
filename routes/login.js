@@ -60,7 +60,15 @@ router.post('/homepage',
 
 //renders the search page
 router.get('/search', (req, res) => {
-    res.render('search');
+    //user ended his or her session 
+    if(get_loguser)
+    {
+        res.render('search');
+    }
+    else
+    {
+        res.redirect('/login');
+    }
 });
 
 //if anyone tries to enter the homepage with proper verification 
@@ -101,14 +109,22 @@ router.post('/get_result',
         });
     });
     router.get('/profile',(req,res)=>{
-        res.render('user_profile',{
-            data: {
-                name:get_loguser
-            }
-        });
-        //debugger
-        console.log(get_loguser);
-    });
+        //checking the session
+        if(get_loguser)
+        {
+            res.render('user_profile',{
+                data: {
+                    name:get_loguser
+                }
+            });
+            //debugger
+           // console.log(get_loguser);
+       }
+       else
+       {
+           res.redirect('/login');
+       }
+});
 
     //helps user to get in touch with the admin
 router.post('/send', (req, res) => {
