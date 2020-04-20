@@ -56,7 +56,16 @@ router.post('/homepage',
 router.get('/search', (req, res) => {
     res.render('search');
 });
-
+router.get('/homepage',(req,res)=>{
+    if(get_loguser){
+        res.render('homepage');
+        get_loguser = data.name;
+    }
+    else
+    {
+        res.redirect('/login');
+    }
+});
 router.post('/get_result',
     [
         check('username').not().isEmpty().trim().escape()
