@@ -65,7 +65,7 @@ router.post('/get_result',
             res.send("validation error");
         }
 
-        user.findOne({ username: req.body.username}, (error, result) => {
+        user.findOne({ username: req.body.username }, (error, result) => {
             if (error) {
                 res.send("error found");
             }
@@ -79,35 +79,36 @@ router.post('/get_result',
             }
         });
     });
-    router.post('/send',(req,res)=>{
-        var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: '', //the admins email
-                pass: ''// the admins password
-            }
-        });
-        var mailOptions = {
-            from :req.body.email,
-            to: '', // the admins email
-            subject: req.body.subject,
-            text: req.body.message
-
-        };
-        transporter.sendMail(mailOptions,(error,info)=>{
-            if(error)
-            {
-                return res.json({
-                    status: false,
-                    message: 'Sending failed....',
-                    error: error
-                })
-            }
-            else
-            {
-                res.send('sent');
-            }
-        })
-
+    router.get('/profile',(req,res)=>{
+        res.render('user_profile');
     });
+router.post('/send', (req, res) => {
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: '', //the admins email
+            pass: ''// the admins password
+        }
+    });
+    var mailOptions = {
+        from: req.body.email,
+        to: '', // the admins email
+        subject: req.body.subject,
+        text: req.body.message
+
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return res.json({
+                status: false,
+                message: 'Sending failed....',
+                error: error
+            })
+        }
+        else {
+            res.send('sent');
+        }
+    })
+
+});
 module.exports = router;
