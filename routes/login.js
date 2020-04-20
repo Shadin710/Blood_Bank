@@ -107,7 +107,7 @@ router.post('/get_result',
             }
         });
         //debugger
-       // console.log(get_loguser);
+        console.log(get_loguser);
     });
 
     //helps user to get in touch with the admin
