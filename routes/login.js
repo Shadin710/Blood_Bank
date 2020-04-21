@@ -156,10 +156,21 @@ router.post('/send', (req, res) => {
     })
 
 });
+
+//adding request blood option 
+router.get('/get_blood',(req,res)=>{
+    res.send('this route is working..');
+})
+
+
+
+
+
+
+
 //adding logout 
 router.get('/logout',(req,res)=>{
     res.redirect('/login');
     get_loguser = '';
  });
-
 module.exports = router;
