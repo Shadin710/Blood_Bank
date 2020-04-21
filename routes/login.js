@@ -7,6 +7,10 @@ const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
 let get_loguser= '';
+const user_req = require('./../models/notify');
+let get_blood = '';
+let get_address = '';
+let get_email ='';
 
 router.use(express.static(path.join(__dirname + './../views')));
 
@@ -171,11 +175,28 @@ router.get('/notify',(req,res)=>{
         get_loguser = '';
     }
 });
+//notification added
+router.post('/notify',(req,res)=>{
+    user_req.create(
+        {
+            username: get_loguser,
+            bloodGroup:get_blood,
+            email: get_email,
+            address: get_address   
+        },
+        (error,result)=>{
+            if(error){
+                return res.json({
+                    status: false,
+                    message: 'Error in inserting',
+                    error: error
+                })
+            }
 
-
-
-
-
+            //everything is okay
+            res.redirect('/homepage');
+        });
+});
 
 
 
