@@ -159,12 +159,11 @@ router.post('/send', (req, res) => {
 });
 
 //adding request blood option 
-router.get('/get_blood',(req,res)=>{
+router.get('/notify',(req,res)=>{
 
     if(get_loguser)
-    {
-        res.redirect('/notify');   
-        //res.send('this route is working..');
+    {   
+        res.send('this route is working..');
     }
     else
     {
