@@ -9,10 +9,6 @@ const userNot =  mongoose.Schema({
         type: String,
         require: true
     },
-    address: {
-        type: String,
-        require: true
-    },
     email: {
         type: String,
         require: true

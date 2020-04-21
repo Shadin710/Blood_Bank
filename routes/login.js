@@ -47,6 +47,9 @@ router.post('/homepage',
                 if (isMatch) {
                     res.render('homepage');
                     get_loguser = req.body.username;
+                    get_blood =result.bloodgroup;
+                    get_email = result.email;
+                    //console.log(get_blood);
                 }
                 else {
                     res.redirect('/login');
@@ -182,7 +185,6 @@ router.post('/notify',(req,res)=>{
             username: get_loguser,
             bloodGroup:get_blood,
             email: get_email,
-            address: get_address   
         },
         (error,result)=>{
             if(error){
