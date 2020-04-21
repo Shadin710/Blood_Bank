@@ -163,15 +163,16 @@ router.get('/get_blood',(req,res)=>{
 
     if(get_loguser)
     {
-        
-        res.send('this route is working..');
+        res.redirect('/notify');   
+        //res.send('this route is working..');
     }
     else
     {
         res.redirect('/login');
         get_loguser = '';
     }
-})
+});
+
 
 
 
