@@ -9,7 +9,7 @@ form.box(action='/reg/create' method='POST')
   input(type='email' name='email' placeholder='Email')
   input(type='password' name='password' placeholder='Password')
   label(for='bloodGroup') Select Blood Group
-  select#bloodGroup
+  select#bloodGroup(name='blood')
     option(value='A+') A+
     option(value='A-') A-
     option(value='B+') B+

@@ -14,6 +14,10 @@ const userSchema =  mongoose.Schema({
         require: true,
         unique: true
     },
+    bloodgroup:{
+        type:String,
+        require: true
+    },
     createOn:{
         type: Date,
         default: Date.now()
