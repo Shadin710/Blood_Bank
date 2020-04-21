@@ -80,6 +80,7 @@ router.get('/homepage',(req,res)=>{
     else
     {
         res.redirect('/login');
+        get_loguser='';
     }
 });
 
@@ -159,7 +160,16 @@ router.post('/send', (req, res) => {
 
 //adding request blood option 
 router.get('/get_blood',(req,res)=>{
-    res.send('this route is working..');
+
+    if(get_loguser)
+    {
+        res.send('this route is working..');
+    }
+    else
+    {
+        res.redirect('/login');
+        get_loguser = '';
+    }
 })
 
 
