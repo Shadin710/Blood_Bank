@@ -122,7 +122,8 @@ router.post('/get_result',
         {
             res.render('user_profile',{
                 data: {
-                    name:get_loguser
+                    name:get_loguser,
+                    blood:get_blood
                 }
             });
             //debugger
