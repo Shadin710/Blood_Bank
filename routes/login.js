@@ -231,6 +231,7 @@ router.get('/get_req',(req,res)=>{
                     error: error
                 })
             }
+
             //everything is okay
             res.redirect('/login/homepage');
         });
