@@ -171,7 +171,33 @@ router.get('/notify',(req,res)=>{
 
     if(get_loguser)
     {   
-        res.send('this route is working..');
+        user_req.find((error,result)=>{
+            if(error)
+            {
+                return res.json({
+                    status: false,
+                    message:'there is a problem in searching',
+                    error: error
+                })
+            }
+
+            //everything is okay
+            if(result)
+            {
+                return res.json({
+                    status:true,
+                    message:'found the users',
+                    result:result
+                })
+            }
+            else
+            {
+                return res.json({
+                    status: false,
+                    message: 'No one requested for blood',
+                })
+            }
+        });
     }
     else
     {
