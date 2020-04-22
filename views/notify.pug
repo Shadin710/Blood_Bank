@@ -7,6 +7,7 @@ head
 //
 .container
   .row.profile
+  each client in result
     .col-md-3
       .profile-sidebar
         // SIDEBAR USERPIC
@@ -16,9 +17,9 @@ head
         // SIDEBAR USER TITLE
         .profile-usertitle
           .profile-usertitle-name
-            | #{result[0].username}
+            | #{client.username}
           .profile-usertitle-job
-            | Blood: #{result[0].bloodGroup}
+            | Blood: #{client.bloodGroup}
         // END SIDEBAR USER TITLE
         // SIDEBAR BUTTONS
         .profile-userbuttons
@@ -29,72 +30,7 @@ head
         // END SIDEBAR BUTTONS
         // SIDEBAR MENU
         // END MENU 1
-    .col-md-3
-      .profile-sidebar
-        // SIDEBAR USERPIC
-        .profile-userpic
-          img.img-responsive(src='https://static.change.org/profile-img/default-user-profile.svg' alt='')
-        // END SIDEBAR USERPIC
-        // SIDEBAR USER TITLE
-        .profile-usertitle
-          .profile-usertitle-name
-            | #{result[1].username}
-          .profile-usertitle-job
-            | Blood: B+
-        // END SIDEBAR USER TITLE
-        // SIDEBAR BUTTONS
-        .profile-userbuttons
-          a(href='')
-          button.btn.btn-success.btn-sm(type='button') Accept
-          a(href='')
-            button.btn.btn-danger.btn-sm(type='button') Decline
-        // END SIDEBAR BUTTONS
-        // SIDEBAR MENU
-        // END MENU 2
-    .col-md-3
-      .profile-sidebar
-        // SIDEBAR USERPIC
-        .profile-userpic
-          img.img-responsive(src='https://static.change.org/profile-img/default-user-profile.svg' alt='')
-        // END SIDEBAR USERPIC
-        // SIDEBAR USER TITLE
-        .profile-usertitle
-          .profile-usertitle-name
-            | Shadin
-          .profile-usertitle-job
-            | Blood: B+
-        // END SIDEBAR USER TITLE
-        // SIDEBAR BUTTONS
-        .profile-userbuttons
-          a(href='')
-          button.btn.btn-success.btn-sm(type='button') Accept
-          a(href='')
-            button.btn.btn-danger.btn-sm(type='button') Decline
-        // END SIDEBAR BUTTONS
-        // SIDEBAR MENU
-        // END MENU 3
-    .col-md-3
-      .profile-sidebar
-        // SIDEBAR USERPIC
-        .profile-userpic
-          img.img-responsive(src='https://static.change.org/profile-img/default-user-profile.svg' alt='')
-        // END SIDEBAR USERPIC
-        // SIDEBAR USER TITLE
-        .profile-usertitle
-          .profile-usertitle-name
-            | Shadin
-          .profile-usertitle-job
-            | Blood: B+
-        // END SIDEBAR USER TITLE
-        // SIDEBAR BUTTONS
-        .profile-userbuttons
-          a(href='')
-          button.btn.btn-success.btn-sm(type='button') Accept
-          a(href='')
-            button.btn.btn-danger.btn-sm(type='button') Decline
-        // END SIDEBAR BUTTONS
-        // SIDEBAR MENU
-        // END MENU 4
+   
 center
   strong
     | Powered by 
