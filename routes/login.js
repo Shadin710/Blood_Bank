@@ -184,15 +184,17 @@ router.get('/notify',(req,res)=>{
             //everything is okay
             if(result)
             {
-                res.render('notify');
+                res.render('notify',{
+                    result:result
+                });
                 // return res.json({
                 //     status:true,
                 //     message:'found the users',
                 //     result:result
                 // });
-                console.log(result[i].username);
-                console.log(result[i].email);
-                i++;
+                //console.log(result[i].username);
+                //console.log(result[i].email);
+                //i++;
             }
             else
             {

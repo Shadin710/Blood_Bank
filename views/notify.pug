@@ -16,9 +16,9 @@ head
         // SIDEBAR USER TITLE
         .profile-usertitle
           .profile-usertitle-name
-            | Shadin
+            | #{result[0].username}
           .profile-usertitle-job
-            | Blood: B+
+            | Blood: #{result[0].bloodGroup}
         // END SIDEBAR USER TITLE
         // SIDEBAR BUTTONS
         .profile-userbuttons
@@ -38,7 +38,7 @@ head
         // SIDEBAR USER TITLE
         .profile-usertitle
           .profile-usertitle-name
-            | Shadin
+            | #{result[1].username}
           .profile-usertitle-job
             | Blood: B+
         // END SIDEBAR USER TITLE
