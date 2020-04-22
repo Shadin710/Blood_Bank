@@ -178,7 +178,7 @@ router.get('/notify',(req,res)=>{
                     status: false,
                     message:'there is a problem in searching',
                     error: error
-                })
+                });
             }
 
             //everything is okay
@@ -188,14 +188,14 @@ router.get('/notify',(req,res)=>{
                     status:true,
                     message:'found the users',
                     result:result
-                })
+                });
             }
             else
             {
                 return res.json({
                     status: false,
                     message: 'No one requested for blood',
-                })
+                });
             }
         });
     }
@@ -205,8 +205,12 @@ router.get('/notify',(req,res)=>{
         get_loguser = '';
     }
 });
+//end
+
+
+
 //notification added
-router.post('/notify',(req,res)=>{
+router.get('/get_req',(req,res)=>{
     user_req.create(
         {
             username: get_loguser,
@@ -223,7 +227,7 @@ router.post('/notify',(req,res)=>{
             }
 
             //everything is okay
-            res.redirect('/homepage');
+            res.redirect('/login/homepage');
         });
 });
 
