@@ -11,7 +11,7 @@ const user_req = require('./../models/notify');
 let get_blood = '';
 let get_address = '';
 let get_email ='';
-
+let i = 0;
 router.use(express.static(path.join(__dirname + './../views')));
 
 router.use(bodyParser.json());
@@ -184,11 +184,15 @@ router.get('/notify',(req,res)=>{
             //everything is okay
             if(result)
             {
-                return res.json({
-                    status:true,
-                    message:'found the users',
-                    result:result
-                });
+                res.render('notify');
+                // return res.json({
+                //     status:true,
+                //     message:'found the users',
+                //     result:result
+                // });
+                console.log(result[i].username);
+                console.log(result[i].email);
+                i++;
             }
             else
             {
