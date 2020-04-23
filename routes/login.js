@@ -102,14 +102,14 @@ router.post('/get_result',
             res.send("validation error");
         }
 
-        user.findOne({ username: req.body.username }, (error, result) => {
+        user.findOne({ bloodgroup: req.body.blood}, (error, result) => {
             if (error) {
                 res.send("error found");
             }
             //result
             if (result) {
                 res.send("found the user");
-                console.log(req.body.username);
+                console.log(result.username);
             }
             else {
                 res.send("user not found");

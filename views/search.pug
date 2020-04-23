@@ -37,7 +37,7 @@ form.box(action='/login/get_result' method='POST')
   input(type='text' placeholder='Username' name='username')
   strong
     label(for='bloodGroup') Select Blood Group
-  select#bloodGroup
+  select#bloodGroup(name='blood')
     option(value='A+') A+
     option(value='A-') A-
     option(value='B+') B+
