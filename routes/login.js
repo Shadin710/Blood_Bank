@@ -110,12 +110,11 @@ router.post('/get_result',
 
             //if there is no error the "result will store the search values"
             //result
-            if (result) {
-                res.json(result);
-            }
-            else {
-                res.send("user not found");
-            }
+            //there will be always something in the result array even this []
+            //so the array won't be null at all 
+            res.render('search_results',{
+                result:result
+            });
         });
     });
     router.get('/profile',(req,res)=>{

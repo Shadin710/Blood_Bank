@@ -1,0 +1,37 @@
+head
+  link#bootstrap-css(href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css' rel='stylesheet')
+  script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js')
+  script(src='http://code.jquery.com/jquery-1.11.1.min.js')
+  link(rel='stylesheet' href='css/user_style.css')
+  // ---- Include the above in your HEAD tag --------
+//
+.container
+  .row.profile
+  each client in result
+    .col-md-3
+      .profile-sidebar
+        // SIDEBAR USERPIC
+        .profile-userpic
+          img.img-responsive(src='https://static.change.org/profile-img/default-user-profile.svg' alt='')
+        // END SIDEBAR USERPIC
+        // SIDEBAR USER TITLE
+        .profile-usertitle
+          .profile-usertitle-name
+            | #{client.username}
+          .profile-usertitle-job
+            | Blood: #{client.bloodgroup}
+        // END SIDEBAR USER TITLE
+        // SIDEBAR BUTTONS
+        .profile-userbuttons
+          a(href='')
+          button.btn.btn-success.btn-sm(type='button') Request
+        // END SIDEBAR BUTTONS
+        // SIDEBAR MENU
+        // END MENU 1
+   
+center
+  strong
+    | Powered by 
+    a(href='' target='_blank') BSB
+br
+br
