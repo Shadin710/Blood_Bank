@@ -120,15 +120,10 @@ router.post('/get_result',
         });
     });
 
-    //requested blood by using the search  engine
-    router.get('/msg',(req,res)=>{
-        if(get_loguser)
-        {
+    //requested blood via the search  engine
+    router.get('/:username',(req,res)=>{
             res.send('working');
-        }else
-        {
-            res.redirect('/login');
-        }
+            console.log(`username: ${req.params.username}`);
     });
 
 
