@@ -122,8 +122,13 @@ router.post('/get_result',
 
     //requested blood by using the search  engine
     router.get('/msg',(req,res)=>{
-
-        res.send('working')
+        if(get_loguser)
+        {
+            res.send('working');
+        }else
+        {
+            res.redirect('/login');
+        }
     });
 
 
