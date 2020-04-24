@@ -11,6 +11,8 @@ const bodyParser = require('body-parser');
 const database = require('./databese');
 const userControl = require('./controller/user');
 const login =  require('./routes/login');
+//const msg = require('./routes/message'); 
+
 //end
 
 //app.use(bodyParser.json());

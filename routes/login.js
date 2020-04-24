@@ -6,6 +6,7 @@ const user = require('./../models/user');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
+
 let get_loguser= '';
 const user_req = require('./../models/notify');
 let get_blood = '';
@@ -21,8 +22,9 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.get('/', (req, res) => {
     res.render('login');
 });
+        
 
-
+    
 
 //renders homepage if the user gives the right credentials of his or her account
 router.post('/homepage',
@@ -117,6 +119,15 @@ router.post('/get_result',
             });
         });
     });
+
+    //requested blood by using the search  engine
+    router.get('/msg',(req,res)=>{
+
+        res.send('working')
+    });
+
+
+    //this shows the user profiles
     router.get('/profile',(req,res)=>{
         //checking the session
         if(get_loguser)
