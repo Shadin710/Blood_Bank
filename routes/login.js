@@ -121,10 +121,10 @@ router.post('/get_result',
     });
 
     //requested blood via the search  engine
-    router.get('/:username',(req,res)=>{
-            res.send('working');
-            console.log(`username: ${req.params.username}`);
-    });
+    router.get('//:username',(req,res)=>{
+        res.send('working');
+        console.log(`username: ${req.params.username}`);
+    })
 
 
     //this shows the user profiles
