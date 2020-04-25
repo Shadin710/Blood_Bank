@@ -122,12 +122,13 @@ router.post('/get_result',
 
     //requested blood via the search  engine
     //need to fix it 
-    //it doesn't work
+    //bug fixed now to develop it
     router.get('/hello/:name/',(req,res)=>{
         res.send('working');
-        console.log(`username: ${req.params.name}`);
+        //debugger
+       // console.log(`username: ${req.params.name}`);
     })
-
+    //end
 
     //this shows the user profiles
     router.get('/profile',(req,res)=>{
