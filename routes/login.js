@@ -124,7 +124,14 @@ router.post('/get_result',
     //need to fix it 
     //bug fixed now to develop it
     router.get('/hello/:name/',(req,res)=>{
-        res.send('working');
+        if(get_loguser)
+        {
+            res.send('working');
+        }
+        else
+        {
+            res.redirect('/login');
+        }
         //debugger
        // console.log(`username: ${req.params.name}`);
     })
