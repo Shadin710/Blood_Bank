@@ -123,9 +123,9 @@ router.post('/get_result',
     //requested blood via the search  engine
     //need to fix it 
     //it doesn't work
-    router.get('//:username',(req,res)=>{
+    router.get('/hello/:name/',(req,res)=>{
         res.send('working');
-        console.log(`username: ${req.params.username}`);
+        console.log(`username: ${req.params.name}`);
     })
 
 

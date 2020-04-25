@@ -37,6 +37,7 @@ app.use(cors());
 // Registering new user
 app.use('/reg',userControl);
 app.use('/login',login);
+//app.use('/:name',msg);
 
 app.get('/',(req,res)=>{
     res.render('index');
