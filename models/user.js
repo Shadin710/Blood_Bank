@@ -18,6 +18,9 @@ const userSchema =  mongoose.Schema({
         type:String,
         require: true
     },
+    details:{
+        type:String
+    },
     createOn:{
         type: Date,
         default: Date.now()

@@ -58,7 +58,8 @@ router.post('/create',
                 username: req.body.username,
                 email: req.body.email,
                 password: hashed,
-                bloodgroup: req.body.blood
+                bloodgroup: req.body.blood,
+                details:''
             },
             (error,result)=>{
                 if(error)

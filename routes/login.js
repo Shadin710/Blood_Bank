@@ -122,11 +122,24 @@ router.post('/get_result',
 
     //requested blood via the search  engine
     //need to fix it 
-    //bug fixed now to develop it
+    //developing
     router.get('/hello/:name/',(req,res)=>{
         if(get_loguser)
         {
-            res.send('working');
+            user.updateOne({username:req.params.name},(error,result)=>{
+                if(error)
+                {
+                    return res.json({
+                        status:false,
+                        message: 'failed requesting..',
+                        error: error
+                    });
+                }
+                result.details = get_email;
+                res.render('user_profile',{
+                    data :  result
+                });
+            })
         }
         else
         {
