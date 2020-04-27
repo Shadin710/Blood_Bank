@@ -20,7 +20,7 @@ router.get('/',(req,res)=>{
 });
 
 //create admin
-router.post('/create',
+router.post('/reg',
     //checks if every field is good *_*
     [
     check('username').not().isEmpty().trim().escape(),
@@ -56,7 +56,7 @@ router.post('/create',
                 email: req.body.email,
                 password: hashed,
                 bloodgroup: req.body.blood,
-                details:''
+                //details:''
             },
             (error,result)=>{
                 if(error)
@@ -67,7 +67,7 @@ router.post('/create',
                         error: error
                     });
                 }
-        
+                res.redirect('/admin');
                 //  return res.json({
                 //      status: true,
                 //      message:'Success',

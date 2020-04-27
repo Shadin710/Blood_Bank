@@ -12,6 +12,7 @@ const database = require('./databese');
 const userControl = require('./controller/user');
 const login =  require('./routes/login');
 const admin = require('./routes/admin');
+const adminControl =  require('./controller/admin');
 //const msg = require('./routes/message'); 
 
 //end
@@ -39,6 +40,7 @@ app.use(cors());
 app.use('/reg',userControl);
 app.use('/login',login);
 app.use('/admin',admin);
+app.use('/create',adminControl);
 
 app.get('/',(req,res)=>{
     res.render('index');

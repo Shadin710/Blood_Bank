@@ -6,8 +6,10 @@ const user = require('./../models/user');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
+const admin =  require('./../models/admin');
 
 let get_loguser= '';
+let get_logAdmin='';
 const user_req = require('./../models/notify');
 router.use(express.static(path.join(__dirname + './../views')));
 
@@ -15,7 +17,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 router.get('/',(req,res)=>{
-    res.render('admin_login');
+    res.render('admin_log');
 });
 
 
@@ -32,7 +34,7 @@ router.post('/admin_panel',
             res.send("validation error");
         }
         //everything is ok
-        user.findOne({ username: req.body.username }, (error, result) => {
+        admin.findOne({ username: req.body.username }, (error, result) => {
             if (error) {
                 res.send('failed to read');
             }
@@ -41,19 +43,19 @@ router.post('/admin_panel',
             if (result) {
                 var isMatch = bcrypt.compareSync(req.body.password, result.password);
                 if (isMatch) {
-                    res.render('homepage');
-                    get_loguser = req.body.username;
+                    res.send('done');
+                    get_logAdmin = req.body.username;
                     get_blood =result.bloodgroup;
                     get_email = result.email;
                     //console.log(get_blood);
                 }
                 else {
-                    res.redirect('/login');
+                    res.redirect('/admin');
                     console.log("Password don't match");
                 }
             }
             else {
-                res.redirect('/login');
+                res.redirect('/admin');
                 console.log("You didn't provided any username");
             }
 
