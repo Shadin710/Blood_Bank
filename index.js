@@ -11,6 +11,7 @@ const bodyParser = require('body-parser');
 const database = require('./databese');
 const userControl = require('./controller/user');
 const login =  require('./routes/login');
+const admin = require('./routes/admin');
 //const msg = require('./routes/message'); 
 
 //end
@@ -37,7 +38,7 @@ app.use(cors());
 // Registering new user
 app.use('/reg',userControl);
 app.use('/login',login);
-
+app.use('/admin',admin);
 
 app.get('/',(req,res)=>{
     res.render('index');
