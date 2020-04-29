@@ -63,6 +63,17 @@ router.post('/admin_panel',
     }
 );
 
+router.get('/admin_panel',(req,res)=>{
+    if(get_logAdmin)
+    {
+        res.send('done');
+    }
+    else
+    {
+        res.redirect('/admin');
+    }
+});
+
 
 
 module.exports = router;
