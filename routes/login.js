@@ -166,10 +166,8 @@ router.post('/get_result',
                     });
                 }
                 //no error 
-                return res.json({
-                    status:true,
-                    message:'done',
-                    result: result
+                res.render('see_req',{
+                    result:result
                 });
             });
         }
