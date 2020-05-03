@@ -1,0 +1,15 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Requests
+  link(rel='stylesheet' href='css/see_style.css' type='text/css')
+#mario-chat
+  h2 Requested Users
+  #chat-window
+    #output
+      | #{result.username}
+      br
+      | #{result.email}
+      br
+  button#send Clear
