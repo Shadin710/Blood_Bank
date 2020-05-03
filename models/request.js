@@ -11,6 +11,6 @@ const userReq =  mongoose.Schema({
     }
 });
 
-mongoose.model('request',userNot);
+mongoose.model('request',userReq);
 
 module.exports =  mongoose.model('request');
