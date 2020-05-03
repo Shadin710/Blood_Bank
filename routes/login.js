@@ -6,7 +6,7 @@ const user = require('./../models/user');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
-
+const user_get_req = require('./../models/request');
 let get_loguser= '';
 const user_req = require('./../models/notify');
 let get_blood = '';
@@ -126,20 +126,24 @@ router.post('/get_result',
     router.get('/hello/:name/',(req,res)=>{
         if(get_loguser)
         {
-            user.updateOne({username:req.params.name},(error,result)=>{
-                if(error)
+            user_get_req.create(
                 {
-                    return res.json({
-                        status:false,
-                        message: 'failed requesting..',
-                        error: error
-                    });
-                }
-                result.details = get_email;
-                res.render('user_profile',{
-                    data :  result
+                    username:req.params.name,
+                    message: get_email
+                },
+                (error,result)=>{
+                    if(error)
+                    {
+                        return res.json({
+                            status: false,
+                            message: 'Request failed..',
+                            error: error
+                        });
+                    }
+
+                    //no error
+                    res.redirect('/login/homepage');
                 });
-            })
         }
         else
         {
@@ -148,6 +152,31 @@ router.post('/get_result',
         //debugger
        // console.log(`username: ${req.params.name}`);
     })
+
+    router.get('/see_req',(req,res)=>{
+        if(get_loguser)
+        {
+            user_get_req.find({username:get_loguser},(error,result)=>{
+                if(error)
+                {
+                    return res.json({
+                        status: false,
+                        message:'Searching failed',
+                        error: error
+                    });
+                }
+                //no error 
+                res.render('see_req',{
+                    result:result
+                });
+            })
+        }
+        else
+        {
+            res.redirect('/login');
+        }
+    });
+
     //end
 
     //this shows the user profiles
@@ -271,6 +300,8 @@ router.get('/get_req',(req,res)=>{
             res.redirect('/login/homepage');
         });
 });
+
+
 
 
 
