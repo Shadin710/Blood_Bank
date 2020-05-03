@@ -166,10 +166,12 @@ router.post('/get_result',
                     });
                 }
                 //no error 
-                res.render('see_req',{
-                    result:result
+                return res.json({
+                    status:true,
+                    message:'done',
+                    result: result
                 });
-            })
+            });
         }
         else
         {
