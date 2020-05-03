@@ -7,9 +7,10 @@ head
 #mario-chat
   h2 Requested Users
   #chat-window
+  each client in result
     #output
-      | #{result.username}
+      | Your name: #{client.username}
       br
-      | #{result.email}
+      | Requested client: #{client.message}
       br
   button#send Clear
