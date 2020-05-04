@@ -310,8 +310,10 @@ router.get('/overview',(req,res)=>{
         }
     });
 });
-
-
+//end
+router.get('/settings',(req,res)=>{
+    res.render('user_update');
+});
 
 //adding logout 
 router.get('/logout',(req,res)=>{
