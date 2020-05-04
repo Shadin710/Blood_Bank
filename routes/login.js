@@ -152,7 +152,7 @@ router.post('/get_result',
         //debugger
        // console.log(`username: ${req.params.name}`);
     })
-
+    //see request made to the user by other client
     router.get('/see_req',(req,res)=>{
         if(get_loguser)
         {
@@ -301,7 +301,15 @@ router.get('/get_req',(req,res)=>{
         });
 });
 
-
+//profile overview
+router.get('/overview',(req,res)=>{
+    res.render('overview',{
+        data:{
+            name:get_loguser,
+            blood:get_blood
+        }
+    });
+});
 
 
 
