@@ -311,9 +311,89 @@ router.get('/overview',(req,res)=>{
     });
 });
 //end
+
+//route to account setting
 router.get('/settings',(req,res)=>{
-    res.render('user_update');
+    res.render('user_update',{
+        data:{
+            name: get_loguser,
+            blood:get_blood
+        }
+    });
 });
+//end
+
+//updates users data
+router.post('/update_profile',(req,res)=>{
+
+        console.log(`username: ${req.body.username}`);
+        console.log(`Email: ${req.body.email}`);
+
+        console.log(`Blood: ${req.body.blood}`);
+        console.log(`quotes: ${req.body.qoutes}`);
+
+        if(req.body.username)
+        {
+            user.findOneAndUpdate({username:get_loguser},{username:req.body.username},(error,result)=>{
+                if(error)
+                {
+                    return res.json({
+                        status: false,
+                        message: 'Failed updating...',
+                        error:error
+                    })
+                 }
+            //everything is good
+               console.log(`updated username ${result}`);
+            });
+        }
+        if(req.body.blood)
+        {
+            user.findOneAndUpdate({username:get_loguser},{bloodgroup:req.body.blood},(error,result)=>{
+                if(error)
+                {
+                    return res.json({
+                        status: false,
+                        message: 'Failed updating...',
+                        error:error
+                    })
+                 }
+            //everything is good
+               console.log(`updated blood ${result}`);
+            });
+        }
+        if(req.body.email)
+        {
+            user.findOneAndUpdate({username:get_loguser},{email:req.body.email},(error,result)=>{
+                if(error)
+                {
+                    return res.json({
+                        status: false,
+                        message: 'Failed updating...',
+                        error:error
+                    })
+                 }
+            //everything is good
+               console.log(`updated email..`);
+            });
+        }
+        if(req.body.qoutes)
+        {
+            user.findOneAndUpdate({username:get_loguser},{details:req.body.qoutes},(error,result)=>{
+                if(error)
+                {
+                    return res.json({
+                        status: false,
+                        message: 'Failed updating...',
+                        error:error
+                    })
+                 }
+            //everything is good
+               console.log(`updated quotes`);
+            });
+        }
+        res.redirect('/login/profile');
+    });
 
 //adding logout 
 router.get('/logout',(req,res)=>{

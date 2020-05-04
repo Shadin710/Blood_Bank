@@ -15,46 +15,46 @@ link(rel='stylesheet' href='css/user_update.css')
         // SIDEBAR USER TITLE
         .profile-usertitle
           .profile-usertitle-name
-            | Shadin
+            | #{data.name}
           .profile-usertitle-job
-            | Blood: B+
+            | Blood: #{data.blood}
         // END SIDEBAR USER TITLE
         // SIDEBAR BUTTONS
         .profile-userbuttons
-          a(href='')
-          button.btn.btn-success.btn-sm(type='button') Message
-          a(href='')
+          a(href='/login/see_req')
+            button.btn.btn-success.btn-sm(type='button') Message
+          a(href='/login/get_req')
             button.btn.btn-danger.btn-sm(type='button') Request
         // END SIDEBAR BUTTONS
         // SIDEBAR MENU
         .profile-usermenu
           ul.nav
             li.active
-              a(href='#')
+              a(href='/login/overview')
                 i.glyphicon.glyphicon-home
-                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Overview
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Overview
             li
-              a(href='#')
+              a(href='/login/settings')
                 i.glyphicon.glyphicon-user
-                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Account Settings
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Account Settings
             li
               a(href='#' target='_blank')
                 i.glyphicon.glyphicon-ok
-                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Tasks
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Tasks
             li
               a(href='#')
                 i.glyphicon.glyphicon-flag
-                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Help
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Help
         // END MENU
     .col-md-9
       .profile-content
-        input#message(type='text' placeholder='Username')
-        input#message(type='text' placeholder='Blood')
-        input#message(type='text' placeholder='Email')
-        input#message(type='text' placeholder='Qoutes')
-        br
-        a(href='')
-            button.btn.btn-success.btn-sm(type='button') Update
+        form(action='/login/update_profile' method ='POST')
+          input#message(type='text' placeholder='Username' name='username')
+          input#message(type='text' placeholder='Blood' name = 'blood')
+          input#message(type='text' placeholder='Email' name = 'email')
+          input#message(type='text' placeholder='Qoutes' name = 'qoutes')
+          br
+          input.btn.btn-success.btn-sm(type='submit' value='Update')
 center
   strong
     | Powered by 
