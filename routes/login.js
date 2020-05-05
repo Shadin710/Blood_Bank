@@ -399,8 +399,34 @@ router.post('/update_profile',(req,res)=>{
     });
     //end
 
+
+    //news feed
     router.get('/news',(req,res)=>{
-        
+        if(get_loguser)
+        {
+            user_news.find((error,result)=>{
+                if(error)
+                {
+                    return res.json({
+                        status: false,
+                        message:'ERROR 404',
+                        error: error
+                    });
+                }
+
+                //everything is okay
+                if(result)
+                {
+                    res.render('news',{
+                        result:result
+                    });
+                }
+            })
+        }
+        else
+        {
+            res.redirect('/login');
+        }
     })
 //adding logout 
 router.get('/logout',(req,res)=>{
