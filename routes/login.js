@@ -7,6 +7,8 @@ const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
 const user_get_req = require('./../models/request');
+const user_news= require('./../models/news');
+
 let get_loguser= '';
 const user_req = require('./../models/notify');
 let get_blood = '';
@@ -397,7 +399,9 @@ router.post('/update_profile',(req,res)=>{
     });
     //end
 
-    
+    router.get('/news',(req,res)=>{
+        
+    })
 //adding logout 
 router.get('/logout',(req,res)=>{
     res.redirect('/login');
