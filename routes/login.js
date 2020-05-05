@@ -395,7 +395,9 @@ router.post('/update_profile',(req,res)=>{
         }
         res.redirect('/login/profile');
     });
+    //end
 
+    
 //adding logout 
 router.get('/logout',(req,res)=>{
     res.redirect('/login');
