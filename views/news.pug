@@ -1,0 +1,45 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title News Feed
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+  link(rel='stylesheet' href='css/news_css.css' type='text/css')
+nav
+  .nav-wrapper
+    a.brand-logo(href='#') Blood Bank
+    ul#nav-mobile.right.hide-on-med-and-down
+      li
+        a(href='/login/homepage') Home Page
+      li
+        a(href='/login/profle') Profile
+      li
+        a(href='/login/search') Search
+      li
+        a(href='/login/chat') Chat Room
+      li
+        a(href='/login/logout') Logout
+form(action='/login/feed' method='POST')
+  #mario-chat
+    #chat-window
+      textarea#chat-window(name='feed')
+    button.waves-effect.waves-light.btn-large Post
+#mario-chat
+each client in result
+  #chat-window
+    #output
+      p
+        strong #{client.username}
+        br
+        | #{client.stat}
+    #feedback
+.parallax-container
+  .parallax
+    img(src='back.jpg')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.parallax');
+  var instances = M.Parallax.init(elems, options);
+  });

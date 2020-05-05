@@ -18,11 +18,11 @@ nav.navbar.navbar-default(role='navigation')
         span.icon-bar
         span.icon-bar
       // Logo text or image
-      a.navbar-brand(href='index.html') Blood Bank
+      a.navbar-brand(href='/login/homepage') Blood Bank
     .navigation.collapse.navbar-collapse.navbar-ex1-collapse
       ul.nav.navbar-nav
-        li.current
-          a(href='/login/news') News Feed
+        li
+          a(href='/login/news' method='GET') News Feed
         li
           a(href='/login/profile' method='GET') Profile
         li
