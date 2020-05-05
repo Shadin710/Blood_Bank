@@ -324,6 +324,7 @@ router.get('/settings',(req,res)=>{
 //end
 
 //updates users data
+//has some bugs 
 router.post('/update_profile',(req,res)=>{
 
         console.log(`username: ${req.body.username}`);
