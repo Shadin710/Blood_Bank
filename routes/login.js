@@ -452,7 +452,28 @@ router.post('/feed',
         res.redirect('/login');
     }
 });
-//ended t
+//ended 
+
+//checking a overview of profile
+//needs spme development 
+//has some bugs with css
+router.get('/check/:name_new/',(req,res)=>{
+    //res.send('working');
+    user.find({username:req.params.name_new},(error,result)=>{
+        if(error)
+        {
+            return res.json({
+                status: false,
+                message:'Error getting the profile',
+                error:error
+            });
+        }
+        res.render('overview_profile',{
+            result:result
+        })
+    });
+});
+//end
 
 
 //adding logout 

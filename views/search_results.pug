@@ -17,7 +17,7 @@ head
         // SIDEBAR USER TITLE
         .profile-usertitle
           .profile-usertitle-name
-            | #{client.username}
+            a(href=`/login/check/${client.username}/`) #{client.username}
           .profile-usertitle-job
             | Blood: #{client.bloodgroup}
         // END SIDEBAR USER TITLE
