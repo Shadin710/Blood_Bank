@@ -378,31 +378,82 @@ router.post('/update_profile', (req, res) => {
 
 //news feed
 router.get('/news', (req, res) => {
-    if (get_loguser) {
-        res.render('news');
-        // user_news.find((error,result)=>{
-        //     if(error)
-        //     {
-        //         return res.json({
-        //             status: false,
-        //             message:'ERROR 404',
-        //             error: error
-        //         });
-        //     }
+    if (get_loguser) 
+    {
+        //res.render('news');
+        user_news.find((error,result)=>{
+            if(error)
+            {
+                return res.json({
+                    status: false,
+                    message:'ERROR 404',
+                    error: error
+                });
+            }
 
-        //     //everything is okay
-        //     if(result)
-        //     {
-        //         res.render('news',{
-        //             result:result
-        //         });
-        //     }
-        // })
+            //everything is okay
+            if(result)
+            {
+                res.render('news',{
+                    result:result
+                });
+            }
+        })
     }
     else {
         res.redirect('/login');
     }
 });
+//end
+
+// posting a status in news feed
+router.post('/feed',
+    [
+        check('feed').not().isEmpty().trim().escape()
+    ],
+    (req,res)=>{
+    if(get_loguser)
+    {
+        const error =  validationResult(req);
+        if(!error.isEmpty())
+        {
+            return res.json({
+                status: false,
+                message:'Validation error',
+                error:error
+            });
+        }
+
+        //no validation error
+        user_news.create(
+            {
+                username:get_loguser,
+                bloodgroup: get_blood,
+                stat: req.body.feed
+            },
+            (error,result)=>{
+                if(error)
+                {
+                    return res.json({
+                        status: false,
+                        message: 'Failed to post..',
+                        error:error
+                    });
+                }
+
+                //no error at posting
+                res.redirect('/login/news');
+            }
+        )
+    }
+    else
+    {
+        res.redirect('/login');
+    }
+});
+//ended t
+
+
 //adding logout 
 router.get('/logout', (req, res) => {
     res.redirect('/login');

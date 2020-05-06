@@ -9,7 +9,7 @@ const userNews =  mongoose.Schema({
         type: String,
         require: true
     },
-    Stat: {
+    stat: {
         type: String,
         require: true
     }

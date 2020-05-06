@@ -25,15 +25,15 @@ form(action='/login/feed' method='POST')
     #chat-window
       textarea#chat-window(name='feed')
     button.waves-effect.waves-light.btn-large Post
-#mario-chat
 each client in result
-  #chat-window
-    #output
-      p
-        strong #{client.username}
-        br
-        | #{client.stat}
-    #feedback
+  #mario-chat
+    #chat-window
+      #output
+        p
+          strong #{client.username}
+          br
+          | #{client.stat}
+      #feedback
 .parallax-container
   .parallax
     img(src='back.jpg')
