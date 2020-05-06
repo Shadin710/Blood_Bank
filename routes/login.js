@@ -476,6 +476,54 @@ router.get('/check/:name_new/',(req,res)=>{
 //end
 
 
+//accepting users
+router.get('/accept/:name/',(req,res)=>{
+    if(get_loguser)
+    {
+
+        user.findOne({username: req.params.name},(error,result)=>{
+            if(error)
+            {
+                return res.json({
+                    status: false,
+                    message: 'Error finding the data',
+                    error: error
+                });
+            }
+
+            //everything is good
+            
+
+        });
+
+
+        user_req.findOneAndDelete({username: req.params.name},(error,result)=>{
+            if(error)
+            {
+                return res.json({
+                    status: false,
+                    message: 'ERROR DELETING',
+                    error:error
+                });
+            }
+
+            //no error
+            if(result)
+            {
+                console.log('Sucessfully deleted the data');
+            }
+            else
+            {
+                console.log('There is no such data as this');
+            }
+        })   
+    }
+    else
+    {
+        res.redirect('/login');
+    }
+})
+
 //adding logout 
 router.get('/logout', (req, res) => {
     res.redirect('/login');
