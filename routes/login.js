@@ -73,7 +73,7 @@ router.post('/homepage',
 router.get('/search', (req, res) => {
     //user ended his or her session 
     if (get_loguser) {
-        res.render('search');
+        res.render('search_part');
     }
     else {
         res.redirect('/login');
@@ -95,7 +95,7 @@ router.get('/homepage', (req, res) => {
 //gives the output of the search result
 router.post('/get_result',
     [
-        check('username').not().isEmpty().trim().escape()
+        check('users').not().isEmpty().trim().escape()
     ],
     (req, res) => {
         const error = validationResult(req);
@@ -103,7 +103,8 @@ router.post('/get_result',
             res.send("validation error");
         }
 
-        user.find({ bloodgroup: req.body.blood }, (error, result) => {
+        user.find({ $or:[{bloodgroup: req.body.users },{username:req.body.users}]},
+             (error, result) => {
             if (error) {
                 res.send("error found");
             }

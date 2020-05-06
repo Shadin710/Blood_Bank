@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Letter - Simple Sign Up Form
+    //
+      Letter Template
+      https://templatemo.com/tm-510-letter
+      Template Re-distribution is NOT allowed.
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans:300,400')
+    // Google web font "Open Sans"
+    link(rel='stylesheet', href='css/font-awesome.min.css')
+    link(rel='stylesheet', href='css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/demo.css')
+    link(rel='stylesheet', href='css/templatemo-style.css')
+    script(type='text/javascript', src='js/modernizr.custom.86080.js')
+  body
+    #particles-js
+    ul.cb-slideshow
+      li
+      li
+      li
+      li
+      li
+      li
+    .container-fluid
+      .row.cb-slideshow-text-container
+        .tm-content.col-xl-6.col-sm-8.col-xs-8.ml-auto.section
+          header.mb-5
+            h1 Search
+          p.mb-5 Searching somebody?? just type the username and we will find that person for you
+          form.subscribe-form(action='/login/get_result', method='POST')
+            .row.form-section
+              .col-md-7.col-sm-7.col-xs-7
+                input#contact_email.form-control(name='users', type='text', placeholder='Username', required='')
+              .col-md-5.col-sm-5.col-xs-5
+                button.tm-btn-subscribe(type='submit') search
+          .tm-social-icons-container.text-xs-center
+            a.tm-social-link(href='#')
+              i.fa.fa-facebook
+            a.tm-social-link(href='#')
+              i.fa.fa-google-plus
+            a.tm-social-link(href='#')
+              i.fa.fa-twitter
+            a.tm-social-link(href='#')
+              i.fa.fa-linkedin
+    script(type='text/javascript', src='js/particles.js')
+    script(type='text/javascript', src='js/app.js')
