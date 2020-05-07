@@ -1,0 +1,36 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Users
+  link(rel='stylesheet' href='css/overview_style.css')
+#card
+  h1 #{result.username}
+  .image-crop
+    img#avatar(src='https://drive.google.com/uc?id=1EVA3KUBLxCXF2EGmTf4LUB8F4yAvBrjl')
+  br
+  br
+  #stats
+    .col
+      p.stat
+      p.label
+    .col
+      p.stat #{result.bloodgroup}
+      p.label
+    .col
+      p.stat
+      p.label
+  br
+  #stats
+    .col
+      p.stat
+      p.label
+    .col
+      p.stat #{result.email}
+      p.label
+    .col
+      p.stat
+      p.label
+  br
+  br
+  br

@@ -494,47 +494,48 @@ router.get('/accept/:name/', (req, res) => {
                 console.log(result);
                 console.log(get_req_email);
             });
-            console.log(get_req_email);
-            res.send('okay');
-        //this will be for the user who globally requested the blood
-        // user_acpt.create({
-        //     username_req: req.params.name,
-        //     username_accept: get_loguser,
-        //     email_accpt: get_email,
-        //     email_req: get_req_email
-        // },
-        //     (error, result) => {
-        //         if (error) {
-        //             return res.json({
-        //                 status: false,
-        //                 message: 'Error inserting the data',
-        //                 error: error
-        //             });
-        //         }
+            //console.log(get_req_email);
+            //res.send('okay');
+       // this will be for the user who globally requested the blood
+        user_acpt.create({
+            username_req: req.params.name,
+            username_accept: get_loguser,
+            email_accpt: get_email,
+            email_req: get_req_email
+        },
+            (error, result) => {
+                if (error) {
+                    return res.json({
+                        status: false,
+                        message: 'Error inserting the data',
+                        error: error
+                    });
+                }
 
-        //         //everything is good
-        //         //data has been inserted
-        //     });
+                //everything is good
+                //data has been inserted
+            });
 
 
-        // //deleting the global request because someone has accepted the req
-        // user_req.findOneAndDelete({ username: req.params.name }, (error, result) => {
-        //     if (error) {
-        //         return res.json({
-        //             status: false,
-        //             message: 'ERROR DELETING',
-        //             error: error
-        //         });
-        //     }
-        //     //no error
-        //     if (result) {
-        //         console.log('Sucessfully deleted the data');
-        //     }
-        //     else {
-        //         console.log('There is no such data as this');
-        //     }
-        //     res.redirect('/login/notify');
-        // });
+        //deleting the global request because someone has accepted the req
+        user_req.findOneAndDelete({ username: req.params.name }, (error, result) => {
+            if (error) {
+                return res.json({
+                    status: false,
+                    message: 'ERROR DELETING',
+                    error: error
+                });
+            }
+            //no error
+            if (result) {
+                console.log('Sucessfully deleted the data');
+                res.redirect('/login/notify');
+            }
+            else {
+                console.log('There is no such data as this');
+            }
+           // res.redirect('/login/notify');
+         });
     }
     else {
         res.redirect('/login');
@@ -599,6 +600,29 @@ router.get('/requested',(req,res)=>{
 //end
 
 
+//checks the user
+router.get('/overview/:name_req',(req,res)=>{
+    //res.send('working');
+    user.findOne({username: req.params.name_req},(error,result)=>{
+        if(error)
+        {
+            return res.json({
+                status: false,
+                message:'error finding try again',
+                error:error
+            });
+        }
+        //everything good
+        return res.json({
+            status:true,
+            result:result
+        })
+        // res.render('overview_req',{
+        //     result:result
+        // })
+    });
+});
+//end
 //adding logout 
 router.get('/logout', (req, res) => {
     res.redirect('/login');

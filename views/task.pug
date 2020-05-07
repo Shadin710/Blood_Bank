@@ -13,7 +13,7 @@ nav
       li
         a(href='/login/homepage') Home Page
       li
-        a(href='/login/profle') Profile
+        a(href='/login/profile') Profile
       li
         a(href='/login/search') Search
       li
@@ -24,10 +24,11 @@ each client in result
   #mario-chat
     #chat-window
       #output
-        p
-          strong #{client.username_req}
-          br
-          | #{client.email_req}
+        a(href=`/login/overview/${client.username_req}` method='GET')
+          p
+            strong #{client.username_req}
+            br
+            | #{client.email_req}
       #feedback
 .parallax-container
   .parallax
