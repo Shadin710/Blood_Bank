@@ -491,6 +491,8 @@ router.get('/accept/:name/', (req, res) => {
                 //no error in finding the data
                 get_req_email = result.email;
             });
+
+
         //this will be for the user who globally requested the blood
         user_acpt.create({
             username_req: req.params.name,
@@ -537,6 +539,62 @@ router.get('/accept/:name/', (req, res) => {
 });
 
 //ending of accepted method
+
+//Tasks routes
+
+router.get('/task',(req,res)=>{
+    if(get_loguser)
+    {
+        user_acpt.find({username_accept:get_loguser},(error,result)=>{
+            if(error)
+            {
+                return res.json({
+                    status:false,
+                    message:'Error finding the data',
+                    error: error  
+                })
+            }
+
+            //no error
+            res.render('task',{
+                result:result
+            });
+        })
+    }
+    else
+    {
+        res.redirect('/login');
+    }
+});
+//end of task route
+
+//Accepted routes
+router.get('/requested',(req,res)=>{
+    if(get_loguser)
+    {
+        user_acpt.find({username_req:get_loguser},(error,result)=>{
+            if(error)
+            {
+                return res.json({
+                    status: false,
+                    message: 'error at finding the data',
+                    error: error
+                });
+            }
+
+            //everything is okay
+            res.render('accept',{
+                result:result
+            })
+        })
+    }
+    else
+    {
+        res.redirect('/login');
+    }
+})
+//end
+
 
 //adding logout 
 router.get('/logout', (req, res) => {
