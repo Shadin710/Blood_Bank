@@ -479,6 +479,7 @@ router.get('/accept/:name/', (req, res) => {
 
         //this is for to find the email of the requested user 
         //and to show the email who has accepted it 
+        console.log(req.params.name);
         user_req.findOne({ username: req.params.name },
             (error, result) => {
                 if (error) {
@@ -490,48 +491,50 @@ router.get('/accept/:name/', (req, res) => {
                 }
                 //no error in finding the data
                 get_req_email = result.email;
+                console.log(result);
+                console.log(get_req_email);
             });
-
-
+            console.log(get_req_email);
+            res.send('okay');
         //this will be for the user who globally requested the blood
-        user_acpt.create({
-            username_req: req.params.name,
-            username_accept: get_loguser,
-            email_accpt: get_email,
-            email_req: get_req_email
-        },
-            (error, result) => {
-                if (error) {
-                    return res.json({
-                        status: false,
-                        message: 'Error inserting the data',
-                        error: error
-                    });
-                }
+        // user_acpt.create({
+        //     username_req: req.params.name,
+        //     username_accept: get_loguser,
+        //     email_accpt: get_email,
+        //     email_req: get_req_email
+        // },
+        //     (error, result) => {
+        //         if (error) {
+        //             return res.json({
+        //                 status: false,
+        //                 message: 'Error inserting the data',
+        //                 error: error
+        //             });
+        //         }
 
-                //everything is good
-                //data has been inserted
-            });
+        //         //everything is good
+        //         //data has been inserted
+        //     });
 
 
-        //deleting the global request because someone has accepted the req
-        user_req.findOneAndDelete({ username: req.params.name }, (error, result) => {
-            if (error) {
-                return res.json({
-                    status: false,
-                    message: 'ERROR DELETING',
-                    error: error
-                });
-            }
-            //no error
-            if (result) {
-                console.log('Sucessfully deleted the data');
-            }
-            else {
-                console.log('There is no such data as this');
-            }
-            res.redirect('/login/notify');
-        });
+        // //deleting the global request because someone has accepted the req
+        // user_req.findOneAndDelete({ username: req.params.name }, (error, result) => {
+        //     if (error) {
+        //         return res.json({
+        //             status: false,
+        //             message: 'ERROR DELETING',
+        //             error: error
+        //         });
+        //     }
+        //     //no error
+        //     if (result) {
+        //         console.log('Sucessfully deleted the data');
+        //     }
+        //     else {
+        //         console.log('There is no such data as this');
+        //     }
+        //     res.redirect('/login/notify');
+        // });
     }
     else {
         res.redirect('/login');
