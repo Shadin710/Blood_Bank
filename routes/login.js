@@ -8,7 +8,11 @@ const { check, validationResult } = require('express-validator');
 const nodemailer = require('nodemailer');
 const user_get_req = require('./../models/request');
 const user_news = require('./../models/news');
+const user_acpt = require('./../models/accept');
+const user_Task = require('./../models/task');
 
+
+let get_req_email = '';
 let get_loguser = '';
 const user_req = require('./../models/notify');
 let get_blood = '';
@@ -103,21 +107,21 @@ router.post('/get_result',
             res.send("validation error");
         }
 
-        user.find({ $or:[{bloodgroup: req.body.users },{username:req.body.users}]},
-             (error, result) => {
-            if (error) {
-                res.send("error found");
-            }
+        user.find({ $or: [{ bloodgroup: req.body.users }, { username: req.body.users }] },
+            (error, result) => {
+                if (error) {
+                    res.send("error found");
+                }
 
 
-            //if there is no error the "result will store the search values"
-            //result
-            //there will be always something in the result array even this []
-            //so the array won't be null at all 
-            res.render('search_results', {
-                result: result
+                //if there is no error the "result will store the search values"
+                //result
+                //there will be always something in the result array even this []
+                //so the array won't be null at all 
+                res.render('search_results', {
+                    result: result
+                });
             });
-        });
     });
 
 //requested blood via the search  engine
@@ -379,24 +383,21 @@ router.post('/update_profile', (req, res) => {
 
 //news feed
 router.get('/news', (req, res) => {
-    if (get_loguser) 
-    {
+    if (get_loguser) {
         //res.render('news');
-        user_news.find((error,result)=>{
-            if(error)
-            {
+        user_news.find((error, result) => {
+            if (error) {
                 return res.json({
                     status: false,
-                    message:'ERROR 404',
+                    message: 'ERROR 404',
                     error: error
                 });
             }
 
             //everything is okay
-            if(result)
-            {
-                res.render('news',{
-                    result:result
+            if (result) {
+                res.render('news', {
+                    result: result
                 });
             }
         })
@@ -412,64 +413,59 @@ router.post('/feed',
     [
         check('feed').not().isEmpty().trim().escape()
     ],
-    (req,res)=>{
-    if(get_loguser)
-    {
-        const error =  validationResult(req);
-        if(!error.isEmpty())
-        {
-            return res.json({
-                status: false,
-                message:'Validation error',
-                error:error
-            });
-        }
-
-        //no validation error
-        user_news.create(
-            {
-                username:get_loguser,
-                bloodgroup: get_blood,
-                stat: req.body.feed
-            },
-            (error,result)=>{
-                if(error)
-                {
-                    return res.json({
-                        status: false,
-                        message: 'Failed to post..',
-                        error:error
-                    });
-                }
-
-                //no error at posting
-                res.redirect('/login/news');
+    (req, res) => {
+        if (get_loguser) {
+            const error = validationResult(req);
+            if (!error.isEmpty()) {
+                return res.json({
+                    status: false,
+                    message: 'Validation error',
+                    error: error
+                });
             }
-        )
-    }
-    else
-    {
-        res.redirect('/login');
-    }
-});
+
+            //no validation error
+            user_news.create(
+                {
+                    username: get_loguser,
+                    bloodgroup: get_blood,
+                    stat: req.body.feed
+                },
+                (error, result) => {
+                    if (error) {
+                        return res.json({
+                            status: false,
+                            message: 'Failed to post..',
+                            error: error
+                        });
+                    }
+
+                    //no error at posting
+                    res.redirect('/login/news');
+                }
+            )
+        }
+        else {
+            res.redirect('/login');
+        }
+    });
 //ended 
 
 //checking a overview of profile
 //needs spme development 
 //has some bugs with css
-router.get('/check/:name_new/',(req,res)=>{
+router.get('/check/:name_new/', (req, res) => {
     //res.send('working');
-    user.find({username:req.params.name_new},(error,result)=>{
-        if(error)
-        {
+    user.find({ username: req.params.name_new }, (error, result) => {
+        if (error) {
             return res.json({
                 status: false,
-                message:'Error getting the profile',
-                error:error
+                message: 'Error getting the profile',
+                error: error
             });
         }
-        res.render('overview_profile',{
-            result:result
+        res.render('overview_profile', {
+            result: result
         })
     });
 });
@@ -477,52 +473,70 @@ router.get('/check/:name_new/',(req,res)=>{
 
 
 //accepting users
-router.get('/accept/:name/',(req,res)=>{
-    if(get_loguser)
-    {
+//needs some development
+router.get('/accept/:name/', (req, res) => {
+    if (get_loguser) {
 
-        user.findOne({username: req.params.name},(error,result)=>{
-            if(error)
-            {
-                return res.json({
-                    status: false,
-                    message: 'Error finding the data',
-                    error: error
-                });
-            }
+        //this is for to find the email of the requested user 
+        //and to show the email who has accepted it 
+        user_req.findOne({ username: req.params.name },
+            (error, result) => {
+                if (error) {
+                    return res.json({
+                        status: false,
+                        message: 'Error in finding the data',
+                        error: error
+                    })
+                }
+                //no error in finding the data
+                get_req_email = result.email;
+            });
+        //this will be for the user who globally requested the blood
+        user_acpt.create({
+            username_req: req.params.name,
+            username_accept: get_loguser,
+            email_accpt: get_email,
+            email_req: get_req_email
+        },
+            (error, result) => {
+                if (error) {
+                    return res.json({
+                        status: false,
+                        message: 'Error inserting the data',
+                        error: error
+                    });
+                }
 
-            //everything is good
-            
+                //everything is good
+                //data has been inserted
+            });
 
-        });
 
-
-        user_req.findOneAndDelete({username: req.params.name},(error,result)=>{
-            if(error)
-            {
+        //deleting the global request because someone has accepted the req
+        user_req.findOneAndDelete({ username: req.params.name }, (error, result) => {
+            if (error) {
                 return res.json({
                     status: false,
                     message: 'ERROR DELETING',
-                    error:error
+                    error: error
                 });
             }
-
             //no error
-            if(result)
-            {
+            if (result) {
                 console.log('Sucessfully deleted the data');
             }
-            else
-            {
+            else {
                 console.log('There is no such data as this');
             }
-        })   
+            res.redirect('/login/notify');
+        });
     }
-    else
-    {
+    else {
         res.redirect('/login');
     }
-})
+});
+
+//ending of accepted method
 
 //adding logout 
 router.get('/logout', (req, res) => {
