@@ -10,6 +10,7 @@ const user_get_req = require('./../models/request');
 const user_news = require('./../models/news');
 const user_acpt = require('./../models/accept');
 const user_Task = require('./../models/task');
+const socket = require('socket.io');
 
 
 let get_req_email = '';
@@ -623,6 +624,17 @@ router.get('/overview/:name_req',(req,res)=>{
     });
 });
 //end
+router.get('/chat',(req,res)=>{
+    if(get_loguser)
+    {
+        
+    }
+    else
+    {
+        res.redirect('/login/homepage');
+    }
+});
+
 //adding logout 
 router.get('/logout', (req, res) => {
     res.redirect('/login');
