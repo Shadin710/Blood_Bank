@@ -624,16 +624,7 @@ router.get('/overview/:name_req',(req,res)=>{
     });
 });
 //end
-router.get('/chat',(req,res)=>{
-    if(get_loguser)
-    {
-        
-    }
-    else
-    {
-        res.redirect('/login/homepage');
-    }
-});
+
 
 //adding logout 
 router.get('/logout', (req, res) => {
